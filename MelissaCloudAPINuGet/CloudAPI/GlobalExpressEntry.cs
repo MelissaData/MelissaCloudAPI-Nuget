@@ -11,7 +11,7 @@ namespace MelissaData.CloudAPI
   {
     private readonly Dictionary<string, string> parameterMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
     {
-        { nameof(AddressLine1), "line1" },
+        { nameof(AddressLine1), "address1" },
         { nameof(City), "city" },
         { nameof(State), "state" },
         { nameof(Postal), "postalcode" },
@@ -172,7 +172,7 @@ namespace MelissaData.CloudAPI
       }
     }
 
-    public GlobalExpressEntry(string license = null) : base("https://expressentry.melissadata.net", "/web/ExpressAddress")
+    public GlobalExpressEntry(string license = null) : base("https://expressentry.melissadata.net", "/web/GlobalExpressAddress")
     {
       this.License = license ?? Environment.GetEnvironmentVariable("MD_LICENSE");
       this.parameters["format"] = "json";
@@ -181,15 +181,7 @@ namespace MelissaData.CloudAPI
     // Setters
     public void SetAddressLine1(string addressLine1)
     {
-      if (this.Endpoint.ToLower() == "web/globalexpressaddress")
-      {
-        this.parameters["address1"] = parameters["line1"];
-      }
-      else
-      {
-        this.parameters["line1"] = addressLine1;
-      }
-
+      this.parameters["address1"] = addressLine1;
       this.AddressLine1 = addressLine1;
     }
 
@@ -289,18 +281,7 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetAddressLine1() 
     {
-      if (this.parameters.ContainsKey("line1"))
-      {
-        return this.parameters["line1"];
-      }
-      else if (this.parameters.ContainsKey("address1"))
-      {
-        return this.parameters["address1"];
-      }
-      else
-      {
-        return "";
-      }
+      return this.parameters.ContainsKey("address1") ? this.parameters["address1"] : "";
     }
     
     public string GetCity() 
@@ -361,126 +342,6 @@ namespace MelissaData.CloudAPI
     public string GetNativeCharSet() 
     {
       return this.parameters.ContainsKey("nativecharset") ? this.parameters["nativecharset"] : "";
-    }
-
-    /// <summary>
-    /// This synchronous function sends the CloudAPI request using the /web/ExpressAddress endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public T GetExpressAddress<T>()
-    {
-      this.SetEndpoint("/web/ExpressAddress");
-
-      return Get<T>();
-    }
-
-    /// <summary>
-    /// This asynchronous function sends the CloudAPI request using the /web/ExpressAddress endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public async Task<T> GetExpressAddressAsync<T>()
-    {
-      this.SetEndpoint("/web/ExpressAddress");
-
-      return await GetAsync<T>();
-    }
-
-    /// <summary>
-    /// This synchronous function sends the CloudAPI request using the /web/ExpressCityState endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public T GetExpressCityState<T>()
-    {
-      this.SetEndpoint("/web/ExpressCityState");
-
-      return Get<T>();
-    }
-
-    /// <summary>
-    /// This asynchronous function sends the CloudAPI request using the /web/ExpressCityState endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public async Task<T> GetExpressCityStateAsync<T>()
-    {
-      this.SetEndpoint("/web/ExpressCityState");
-
-      return await GetAsync<T>();
-    }
-
-    /// <summary>
-    /// This synchronous function sends the CloudAPI request using the /web/ExpressPostalCode endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public T GetExpressPostalCode<T>()
-    {
-      this.SetEndpoint("/web/ExpressPostalCode");
-
-      return Get<T>();
-    }
-
-    /// <summary>
-    /// This asynchronous function sends the CloudAPI request using the /web/ExpressPostalCode endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public async Task<T> GetExpressPostalCodeAsync<T>()
-    {
-      this.SetEndpoint("/web/ExpressPostalCode");
-
-      return await GetAsync<T>();
-    }
-
-    /// <summary>
-    /// This synchronous function sends the CloudAPI request using the /web/ExpressStreet endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public T GetExpressStreet<T>()
-    {
-      this.SetEndpoint("/web/ExpressStreet");
-
-      return Get<T>();
-    }
-
-    /// <summary>
-    /// This asynchronous function sends the CloudAPI request using the /web/ExpressStreet endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public async Task<T> GetExpressStreetAsync<T>()
-    {
-      this.SetEndpoint("/web/ExpressStreet");
-
-      return await GetAsync<T>();
-    }
-
-    /// <summary>
-    /// This synchronous function sends the CloudAPI request using the /web/ExpressFreeForm endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public T GetExpressFreeForm<T>()
-    {
-      this.SetEndpoint("/web/ExpressFreeForm");
-
-      return Get<T>();
-    }
-
-    /// <summary>
-    /// This asynchronous function sends the CloudAPI request using the /web/ExpressFreeForm endpoint
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns>a string or deserialized response object</returns>
-    public async Task<T> GetExpressFreeFormAsync<T>()
-    {
-      this.SetEndpoint("/web/ExpressFreeForm");
-
-      return await GetAsync<T>();
     }
 
     /// <summary>

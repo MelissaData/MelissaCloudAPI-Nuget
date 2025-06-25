@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>MelissaData.CloudAPI</PackageId>
-		<Version>8.0.0.0</Version>
+		<Version>8.0.1</Version>
 		<Authors>Melissa</Authors>
 		<Description>A library to access and utilize Melissa Cloud APIs</Description>
 		<PackageTags>A Melissa library</PackageTags>
@@ -14,5 +14,4 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
 </Project>

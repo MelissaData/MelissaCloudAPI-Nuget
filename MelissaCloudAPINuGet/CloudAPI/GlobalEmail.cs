@@ -20,6 +20,8 @@ namespace MelissaData.CloudAPI
         { nameof(Opt), "opt" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _email;
     private string _transmissionReference;
@@ -88,41 +90,20 @@ namespace MelissaData.CloudAPI
       this.PostBody = postBody;
     }
 
-    public override void SetValue(string parameter, string value)
-    {
-      parameter = parameter?.Trim();
-
-      if (parameterMappings.TryGetValue(parameter, out string parameterKey))
-      {
-        string propertyName = parameterMappings.FirstOrDefault(x => x.Value.Equals(parameterKey, StringComparison.OrdinalIgnoreCase)).Key;
-
-        var propertyInfo = this.GetType().GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-        if (propertyInfo != null && propertyInfo.CanWrite)
-        {
-          propertyInfo.SetValue(this, value);
-        }
-      }
-      else
-      {
-        // If not in derived class, go to base class implementation
-        base.SetValue(parameter, value);
-      }
-    }
-
     // Getters
     public string GetEmail()
     {
-      return this.parameters.ContainsKey("email") ? this.parameters["email"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Email)]) ? this.parameters[parameterMappings[nameof(Email)]] : "";
     }
 
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public string GetOpt()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public GlobalEmailPostRequest GetPostBody()

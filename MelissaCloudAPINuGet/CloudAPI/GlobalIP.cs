@@ -19,6 +19,8 @@ namespace MelissaData.CloudAPI
         { nameof(Cols), "cols" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _ip;
     private string _transmissionReference;
@@ -111,16 +113,16 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetIP()
     {
-      return this.parameters.ContainsKey("ip") ? this.parameters["ip"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(IP)]) ? this.parameters[parameterMappings[nameof(IP)]] : "";
     }
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public string GetCols()
     {
-      return this.parameters.ContainsKey("cols") ? this.parameters["cols"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Cols)]) ? this.parameters[parameterMappings[nameof(Cols)]] : "";
     }
 
     public GlobalIPPostRequest GetPostBody()

@@ -26,6 +26,8 @@ namespace MelissaData.CloudAPI
         { nameof(NativeCharSet), "nativecharset" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _addressLine1;
     private string _city;
@@ -279,69 +281,69 @@ namespace MelissaData.CloudAPI
     }
 
     // Getters
-    public string GetAddressLine1() 
+    public string GetAddressLine1()
     {
-      return this.parameters.ContainsKey("address1") ? this.parameters["address1"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine1)]) ? this.parameters[parameterMappings[nameof(AddressLine1)]] : "";
     }
-    
-    public string GetCity() 
+
+    public string GetCity()
     {
-      return this.parameters.ContainsKey("city") ? this.parameters["city"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(City)]) ? this.parameters[parameterMappings[nameof(City)]] : "";
     }
-    
-    public string GetState() 
+
+    public string GetState()
     {
-      return this.parameters.ContainsKey("state") ? this.parameters["state"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(State)]) ? this.parameters[parameterMappings[nameof(State)]] : "";
     }
-    
-    public string GetPostal() 
+
+    public string GetPostal()
     {
-      return this.parameters.ContainsKey("postalcode") ? this.parameters["postalcode"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Postal)]) ? this.parameters[parameterMappings[nameof(Postal)]] : "";
     }
-    
-    public string GetFreeForm() 
+
+    public string GetFreeForm()
     {
-      return this.parameters.ContainsKey("ff") ? this.parameters["ff"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FreeForm)]) ? this.parameters[parameterMappings[nameof(FreeForm)]] : "";
     }
-    
-    public string GetThoroughfare() 
+
+    public string GetThoroughfare()
     {
-      return this.parameters.ContainsKey("thoroughfare") ? this.parameters["thoroughfare"] : "";
-    } 
-    
-    public string GetLocality() 
-    {
-      return this.parameters.ContainsKey("locality") ? this.parameters["locality"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Thoroughfare)]) ? this.parameters[parameterMappings[nameof(Thoroughfare)]] : "";
     }
-    
-    public string GetAdministrativeArea() 
+
+    public string GetLocality()
     {
-      return this.parameters.ContainsKey("administrativearea") ? this.parameters["administrativearea"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Locality)]) ? this.parameters[parameterMappings[nameof(Locality)]] : "";
     }
-    
-    public string GetCountry() 
+
+    public string GetAdministrativeArea()
     {
-      return this.parameters.ContainsKey("country") ? this.parameters["country"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AdministrativeArea)]) ? this.parameters[parameterMappings[nameof(AdministrativeArea)]] : "";
     }
-    
-    public string GetMaxRecords() 
+
+    public string GetCountry()
     {
-      return this.parameters.ContainsKey("maxrecords") ? this.parameters["maxrecords"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Country)]) ? this.parameters[parameterMappings[nameof(Country)]] : "";
     }
-    
-    public string GetOpt() 
+
+    public string GetMaxRecords()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(MaxRecords)]) ? this.parameters[parameterMappings[nameof(MaxRecords)]] : "";
     }
-    
-    public string GetCols() 
+
+    public string GetOpt()
     {
-      return this.parameters.ContainsKey("cols") ? this.parameters["cols"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
-    
-    public string GetNativeCharSet() 
+
+    public string GetCols()
     {
-      return this.parameters.ContainsKey("nativecharset") ? this.parameters["nativecharset"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Cols)]) ? this.parameters[parameterMappings[nameof(Cols)]] : "";
+    }
+
+    public string GetNativeCharSet()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(NativeCharSet)]) ? this.parameters[parameterMappings[nameof(NativeCharSet)]] : "";
     }
 
     /// <summary>

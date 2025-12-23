@@ -21,6 +21,8 @@ namespace MelissaData.CloudAPI
         { nameof(TransmissionReference), "t" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _ssn;
     private string _firstName;
@@ -147,27 +149,27 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetSSN()
     {
-      return this.parameters.ContainsKey("ssn") ? this.parameters["ssn"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(SSN)]) ? this.parameters[parameterMappings[nameof(SSN)]] : "";
     }
 
     public string GetFirstName()
     {
-      return this.parameters.ContainsKey("first") ? this.parameters["first"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FirstName)]) ? this.parameters[parameterMappings[nameof(FirstName)]] : "";
     }
 
     public string GetLastName()
     {
-      return this.parameters.ContainsKey("last") ? this.parameters["last"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(LastName)]) ? this.parameters[parameterMappings[nameof(LastName)]] : "";
     }
 
     public string GetFullName()
     {
-      return this.parameters.ContainsKey("full") ? this.parameters["full"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FullName)]) ? this.parameters[parameterMappings[nameof(FullName)]] : "";
     }
 
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public SSNNameMatchPostRequest GetPostBody()

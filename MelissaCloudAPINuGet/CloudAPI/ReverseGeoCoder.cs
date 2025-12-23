@@ -21,6 +21,8 @@ namespace MelissaData.CloudAPI
         { nameof(Opt), "opt" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _latitude;
     private string _longitude;
@@ -163,32 +165,32 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetLatitude()
     {
-      return this.parameters.ContainsKey("lat") ? this.parameters["lat"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Latitude)]) ? this.parameters[parameterMappings[nameof(Latitude)]] : "";
     }
 
     public string GetLongitude()
     {
-      return this.parameters.ContainsKey("long") ? this.parameters["long"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Longitude)]) ? this.parameters[parameterMappings[nameof(Longitude)]] : "";
     }
 
     public string GetMaxRecords()
     {
-      return this.parameters.ContainsKey("recs") ? this.parameters["recs"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(MaxRecords)]) ? this.parameters[parameterMappings[nameof(MaxRecords)]] : "";
     }
 
     public string GetMaxDistance()
     {
-      return this.parameters.ContainsKey("dist") ? this.parameters["dist"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(MaxDistance)]) ? this.parameters[parameterMappings[nameof(MaxDistance)]] : "";
     }
 
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public string GetOpt()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public ReverseGeoCoderRecordRequest GetPostBody()

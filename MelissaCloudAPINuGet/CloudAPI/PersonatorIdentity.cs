@@ -45,6 +45,8 @@ namespace MelissaData.CloudAPI
         { nameof(Privacy), "privacy" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _action;
     private string _nationalId;
@@ -595,152 +597,152 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetAction()
     {
-      return this.parameters.ContainsKey("act") ? this.parameters["act"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Action)]) ? this.parameters[parameterMappings[nameof(Action)]] : "";
     }
 
     public string GetNationalID()
     {
-      return this.parameters.ContainsKey("nat") ? this.parameters["nat"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(NationalID)]) ? this.parameters[parameterMappings[nameof(NationalID)]] : "";
     }
 
     public string GetFirstName()
     {
-      return this.parameters.ContainsKey("first") ? this.parameters["first"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FirstName)]) ? this.parameters[parameterMappings[nameof(FirstName)]] : "";
     }
 
     public string GetLastName()
     {
-      return this.parameters.ContainsKey("last") ? this.parameters["last"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(LastName)]) ? this.parameters[parameterMappings[nameof(LastName)]] : "";
     }
 
     public string GetFullName()
     {
-      return this.parameters.ContainsKey("full") ? this.parameters["full"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FullName)]) ? this.parameters[parameterMappings[nameof(FullName)]] : "";
     }
 
     public string GetCompany()
     {
-      return this.parameters.ContainsKey("comp") ? this.parameters["comp"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Company)]) ? this.parameters[parameterMappings[nameof(Company)]] : "";
     }
 
     public string GetPhone()
     {
-      return this.parameters.ContainsKey("phone") ? this.parameters["phone"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Phone)]) ? this.parameters[parameterMappings[nameof(Phone)]] : "";
     }
 
     public string GetEmail()
     {
-      return this.parameters.ContainsKey("email") ? this.parameters["email"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Email)]) ? this.parameters[parameterMappings[nameof(Email)]] : "";
     }
 
     public string GetDOB()
     {
-      return this.parameters.ContainsKey("dob") ? this.parameters["dob"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(DOB)]) ? this.parameters[parameterMappings[nameof(DOB)]] : "";
     }
 
     public string GetAccountNumber()
     {
-      return this.parameters.ContainsKey("accountNumber") ? this.parameters["accountNumber"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AccountNumber)]) ? this.parameters[parameterMappings[nameof(AccountNumber)]] : "";
     }
 
     public string GetAddressLine1()
     {
-      return this.parameters.ContainsKey("a1") ? this.parameters["a1"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine1)]) ? this.parameters[parameterMappings[nameof(AddressLine1)]] : "";
     }
 
     public string GetAddressLine2()
     {
-      return this.parameters.ContainsKey("a2") ? this.parameters["a2"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine2)]) ? this.parameters[parameterMappings[nameof(AddressLine2)]] : "";
     }
 
     public string GetAddressLine3()
     {
-      return this.parameters.ContainsKey("a3") ? this.parameters["a3"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine3)]) ? this.parameters[parameterMappings[nameof(AddressLine3)]] : "";
     }
 
     public string GetAddressLine4()
     {
-      return this.parameters.ContainsKey("a4") ? this.parameters["a4"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine4)]) ? this.parameters[parameterMappings[nameof(AddressLine4)]] : "";
     }
 
     public string GetAddressLine5()
     {
-      return this.parameters.ContainsKey("a5") ? this.parameters["a5"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine5)]) ? this.parameters[parameterMappings[nameof(AddressLine5)]] : "";
     }
 
     public string GetAddressLine6()
     {
-      return this.parameters.ContainsKey("a6") ? this.parameters["a6"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine6)]) ? this.parameters[parameterMappings[nameof(AddressLine6)]] : "";
     }
 
     public string GetAddressLine7()
     {
-      return this.parameters.ContainsKey("a7") ? this.parameters["a7"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine7)]) ? this.parameters[parameterMappings[nameof(AddressLine7)]] : "";
     }
 
     public string GetAddressLine8()
     {
-      return this.parameters.ContainsKey("a8") ? this.parameters["a8"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine8)]) ? this.parameters[parameterMappings[nameof(AddressLine8)]] : "";
     }
 
     public string GetLocality()
     {
-      return this.parameters.ContainsKey("loc") ? this.parameters["loc"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Locality)]) ? this.parameters[parameterMappings[nameof(Locality)]] : "";
     }
 
     public string GetAdministrativeArea()
     {
-      return this.parameters.ContainsKey("admarea") ? this.parameters["admarea"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AdministrativeArea)]) ? this.parameters[parameterMappings[nameof(AdministrativeArea)]] : "";
     }
 
     public string GetPostal()
     {
-      return this.parameters.ContainsKey("postal") ? this.parameters["postal"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Postal)]) ? this.parameters[parameterMappings[nameof(Postal)]] : "";
     }
 
     public string GetCountry()
     {
-      return this.parameters.ContainsKey("ctry") ? this.parameters["ctry"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Country)]) ? this.parameters[parameterMappings[nameof(Country)]] : "";
     }
 
     public string GetCountryOrigin()
     {
-      return this.parameters.ContainsKey("ctryOrg") ? this.parameters["ctryOrg"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(CountryOrigin)]) ? this.parameters[parameterMappings[nameof(CountryOrigin)]] : "";
     }
 
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public string GetAddressOpt()
     {
-      return this.parameters.ContainsKey("addrOpt") ? this.parameters["addrOpt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressOpt)]) ? this.parameters[parameterMappings[nameof(AddressOpt)]] : "";
     }
 
     public string GetNameOpt()
     {
-      return this.parameters.ContainsKey("nameOpt") ? this.parameters["nameOpt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(NameOpt)]) ? this.parameters[parameterMappings[nameof(NameOpt)]] : "";
     }
 
     public string GetEmailOpt()
     {
-      return this.parameters.ContainsKey("emailOpt") ? this.parameters["emailOpt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(EmailOpt)]) ? this.parameters[parameterMappings[nameof(EmailOpt)]] : "";
     }
 
     public string GetPhoneOpt()
     {
-      return this.parameters.ContainsKey("phoneOpt") ? this.parameters["phoneOpt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(PhoneOpt)]) ? this.parameters[parameterMappings[nameof(PhoneOpt)]] : "";
     }
 
     public string GetOpt()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public string GetPrivacy()
     {
-      return this.parameters.ContainsKey("privacy") ? this.parameters["privacy"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Privacy)]) ? this.parameters[parameterMappings[nameof(Privacy)]] : "";
     }
 
     public PersonatorIdentityRecordRequest GetPostBody()

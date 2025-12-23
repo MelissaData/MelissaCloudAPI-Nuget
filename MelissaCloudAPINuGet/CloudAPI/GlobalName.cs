@@ -21,6 +21,8 @@ namespace MelissaData.CloudAPI
         { nameof(Opt), "opt" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _company;
     private string _fullName;
@@ -146,29 +148,29 @@ namespace MelissaData.CloudAPI
     }
 
     // Getters
-    public string GetCompany() 
+    public string GetCompany()
     {
-      return this.parameters.ContainsKey("comp") ? this.parameters["comp"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Company)]) ? this.parameters[parameterMappings[nameof(Company)]] : "";
     }
 
-    public string GetFullName() 
+    public string GetFullName()
     {
-      return this.parameters.ContainsKey("full") ? this.parameters["full"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FullName)]) ? this.parameters[parameterMappings[nameof(FullName)]] : "";
     }
-    
-    public string GetCountry() 
+
+    public string GetCountry()
     {
-      return this.parameters.ContainsKey("ctry") ? this.parameters["ctry"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Country)]) ? this.parameters[parameterMappings[nameof(Country)]] : "";
     }
-    
-    public string GetTransmissionReference() 
+
+    public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
-    
-    public string GetOpt() 
+
+    public string GetOpt()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public GlobalNamePostRequest GetPostBody()

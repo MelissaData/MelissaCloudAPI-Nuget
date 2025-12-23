@@ -21,6 +21,8 @@ namespace MelissaData.CloudAPI
         { nameof(Opt), "opt" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _phone;
     private string _country;
@@ -145,29 +147,29 @@ namespace MelissaData.CloudAPI
     }
 
     // Getters
-    public string GetPhone() 
+    public string GetPhone()
     {
-      return this.parameters.ContainsKey("phone") ? this.parameters["phone"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Phone)]) ? this.parameters[parameterMappings[nameof(Phone)]] : "";
     }
-    
-    public string GetCountry() 
+
+    public string GetCountry()
     {
-      return this.parameters.ContainsKey("ctry") ? this.parameters["ctry"] : "";
-    }  
-    
-    public string GetCountryOrigin() 
-    {
-      return this.parameters.ContainsKey("ctryOrg") ? this.parameters["ctryOrg"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Country)]) ? this.parameters[parameterMappings[nameof(Country)]] : "";
     }
-    
-    public string GetTransmissionReference() 
+
+    public string GetCountryOrigin()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(CountryOrigin)]) ? this.parameters[parameterMappings[nameof(CountryOrigin)]] : "";
     }
-    
-    public string GetOpt() 
+
+    public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
+    }
+
+    public string GetOpt()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public GlobalPhonePostRequest GetPostBody()

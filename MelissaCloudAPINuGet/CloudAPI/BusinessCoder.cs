@@ -34,6 +34,8 @@ namespace MelissaData.CloudAPI
         { nameof(Cols), "cols" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _recordID;
     private string _company;
@@ -380,82 +382,82 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetRecordID()
     {
-      return this.parameters.ContainsKey("rec") ? this.parameters["rec"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(RecordID)]) ? this.parameters[parameterMappings[nameof(RecordID)]] : "";
     }
 
     public string GetCompany()
     {
-      return this.parameters.ContainsKey("comp") ? this.parameters["comp"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Company)]) ? this.parameters[parameterMappings[nameof(Company)]] : "";
     }
 
     public string GetPhone()
     {
-      return this.parameters.ContainsKey("phone") ? this.parameters["phone"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Phone)]) ? this.parameters[parameterMappings[nameof(Phone)]] : "";
     }
 
     public string GetAddressLine1()
     {
-      return this.parameters.ContainsKey("a1") ? this.parameters["a1"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine1)]) ? this.parameters[parameterMappings[nameof(AddressLine1)]] : "";
     }
 
     public string GetAddressLine2()
     {
-      return this.parameters.ContainsKey("a2") ? this.parameters["a2"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine2)]) ? this.parameters[parameterMappings[nameof(AddressLine2)]] : "";
     }
 
     public string GetSuite()
     {
-      return this.parameters.ContainsKey("suite") ? this.parameters["suite"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Suite)]) ? this.parameters[parameterMappings[nameof(Suite)]] : "";
     }
 
-    public string GetCity() 
+    public string GetCity()
     {
-      return this.parameters.ContainsKey("city") ? this.parameters["city"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(City)]) ? this.parameters[parameterMappings[nameof(City)]] : "";
     }
 
-    public string GetState() 
+    public string GetState()
     {
-      return this.parameters.ContainsKey("state") ? this.parameters["state"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(State)]) ? this.parameters[parameterMappings[nameof(State)]] : "";
     }
-    public string GetPostal() 
+    public string GetPostal()
     {
-      return this.parameters.ContainsKey("postal") ? this.parameters["postal"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Postal)]) ? this.parameters[parameterMappings[nameof(Postal)]] : "";
     }
-    public string GetCountry() 
+    public string GetCountry()
     {
-      return this.parameters.ContainsKey("ctry") ? this.parameters["ctry"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Country)]) ? this.parameters[parameterMappings[nameof(Country)]] : "";
     }
-    public string GetMAK() 
+    public string GetMAK()
     {
-      return this.parameters.ContainsKey("mak") ? this.parameters["mak"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(MAK)]) ? this.parameters[parameterMappings[nameof(MAK)]] : "";
     }
-    public string GetStockTicker() 
+    public string GetStockTicker()
     {
-      return this.parameters.ContainsKey("stock") ? this.parameters["stock"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(StockTicker)]) ? this.parameters[parameterMappings[nameof(StockTicker)]] : "";
     }
-    public string GetWebAddress() 
+    public string GetWebAddress()
     {
-      return this.parameters.ContainsKey("web") ? this.parameters["web"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(WebAddress)]) ? this.parameters[parameterMappings[nameof(WebAddress)]] : "";
     }
-    public string GetMEK() 
+    public string GetMEK()
     {
-      return this.parameters.ContainsKey("mek") ? this.parameters["mek"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(MEK)]) ? this.parameters[parameterMappings[nameof(MEK)]] : "";
     }
-    public string GetFreeForm() 
+    public string GetFreeForm()
     {
-      return this.parameters.ContainsKey("freeform") ? this.parameters["freeform"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(FreeForm)]) ? this.parameters[parameterMappings[nameof(FreeForm)]] : "";
     }
-    public string GetTransmissionReference() 
+    public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
-    }    
-    public string GetOpt() 
-    {
-      return this.parameters.ContainsKey("opt") ? this.parameters["opt"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
-    public string GetCols() 
+    public string GetOpt()
     {
-      return this.parameters.ContainsKey("cols") ? this.parameters["cols"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
+    }
+    public string GetCols()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(Cols)]) ? this.parameters[parameterMappings[nameof(Cols)]] : "";
     }
 
     public BusinessCoderPostRequest GetPostBody()

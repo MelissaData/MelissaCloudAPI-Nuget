@@ -22,6 +22,8 @@ namespace MelissaData.CloudAPI
         { nameof(TransmissionReference), "t" }
     };
 
+    protected override Dictionary<string, string> ParameterMappings => parameterMappings;
+
     // Private backing fields
     private string _units;
     private string _startLatitude;
@@ -165,32 +167,32 @@ namespace MelissaData.CloudAPI
     // Getters
     public string GetUnits()
     {
-      return this.parameters.ContainsKey("units") ? this.parameters["units"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(Units)]) ? this.parameters[parameterMappings[nameof(Units)]] : "";
     }
 
     public string GetStartLatitude()
     {
-      return this.parameters.ContainsKey("StartLatitude") ? this.parameters["StartLatitude"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(StartLatitude)]) ? this.parameters[parameterMappings[nameof(StartLatitude)]] : "";
     }
 
     public string GetStartLongitude()
     {
-      return this.parameters.ContainsKey("StartLongitude") ? this.parameters["StartLongitude"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(StartLongitude)]) ? this.parameters[parameterMappings[nameof(StartLongitude)]] : "";
     }
 
     public string GetEndLatitude()
     {
-      return this.parameters.ContainsKey("EndLatitude") ? this.parameters["EndLatitude"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(EndLatitude)]) ? this.parameters[parameterMappings[nameof(EndLatitude)]] : "";
     }
 
     public string GetEndLongitude()
     {
-      return this.parameters.ContainsKey("EndLongitude") ? this.parameters["EndLongitude"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(EndLongitude)]) ? this.parameters[parameterMappings[nameof(EndLongitude)]] : "";
     }
 
     public string GetTransmissionReference()
     {
-      return this.parameters.ContainsKey("t") ? this.parameters["t"] : "";
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
     }
 
     public StreetRoutePostRequest GetPostBody()

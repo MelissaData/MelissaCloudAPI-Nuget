@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -16,10 +18,8 @@ namespace MelissaData.CloudAPI
   /// </summary>
   public abstract class CloudAPIBase
   {
-    private readonly Dictionary<string, string> baseParameterMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-    {
-        { nameof(Format), "format" }
-    };
+    protected virtual Dictionary<string, string> ParameterMappings => null;
+    protected Dictionary<string, string> parameters;
 
     // Private backing fields
     private string _format;
@@ -52,11 +52,9 @@ namespace MelissaData.CloudAPI
       set
       {
         _format = value;
-        parameters[baseParameterMappings[nameof(Format)]] = value;
+        parameters["format"] = value;
       }
     }
-
-    protected Dictionary<string, string> parameters;
 
     public CloudAPIBase(string baseUrl, string endpoint)
     {
@@ -96,19 +94,28 @@ namespace MelissaData.CloudAPI
     {
       parameter = parameter?.Trim();
 
-      if (baseParameterMappings.TryGetValue(parameter, out string parameterKey))
+      if (parameter.Equals("format", StringComparison.OrdinalIgnoreCase))
       {
-        if (parameterKey == "format")
+        Format = value;
+      }
+      else if (parameter.Equals("baseurl", StringComparison.OrdinalIgnoreCase))
+      {
+        BaseUrl = value;
+      }
+      else if (parameter.Equals("license", StringComparison.OrdinalIgnoreCase))
+      {
+        License = value;
+      }
+      else if (parameter.Equals("endpoint", StringComparison.OrdinalIgnoreCase))
+      {
+        Endpoint = value;
+      }
+      else if (ParameterMappings != null && ParameterMappings.TryGetValue(parameter, out string urlKey))
+      { 
+        var propertyInfo = this.GetType().GetProperty(parameter, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+        if (propertyInfo != null && propertyInfo.CanWrite)
         {
-          Format = value;
-        }
-        else
-        { 
-          var propertyInfo = this.GetType().GetProperty(parameter, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-          if (propertyInfo != null && propertyInfo.CanWrite)
-          {
-            propertyInfo.SetValue(this, value);
-          }
+          propertyInfo.SetValue(this, value);
         }
       }
       else
@@ -139,23 +146,30 @@ namespace MelissaData.CloudAPI
 
     public string GetValue(string parameter)
     {
-      if (parameter.ToLower() == "baseurl")
+      if (parameter.Equals("baseurl", StringComparison.OrdinalIgnoreCase))
       {
         return this.GetBaseURL();
       }
-      else if (parameter.ToLower() == "license")
+      else if (parameter.Equals("license", StringComparison.OrdinalIgnoreCase))
       {
         return this.GetLicense();
       }
-      else if (parameter.ToLower() == "endpoint")
+      else if (parameter.Equals("endpoint", StringComparison.OrdinalIgnoreCase))
       {
         return this.GetEndpoint();
       }
-      else if (parameter.ToLower() == "format")
+      else if (parameter.Equals("format", StringComparison.OrdinalIgnoreCase))
       {
         return this.GetFormat();
       }
 
+      // Check derived class parameter mappings
+      if (ParameterMappings != null && ParameterMappings.TryGetValue(parameter, out string urlKey))
+      {
+        return this.parameters.ContainsKey(urlKey) ? this.parameters[urlKey] : "";
+      }
+
+      // Fall back to direct lookup
       return this.parameters.ContainsKey(parameter) ? this.parameters[parameter] : "";
     }
 

@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace MelissaData.CloudAPI
 {
   public abstract class RecordRequest

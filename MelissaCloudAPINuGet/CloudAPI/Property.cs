@@ -588,6 +588,58 @@ namespace MelissaData.CloudAPI
     }
 
     /// <summary>
+    /// This synchronous function sends the CloudAPI request using the /v4/WEB/LookupListings endpoint
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>a string or deserialized response object</returns>
+    public T GetLookupListings<T>()
+    {
+      this.SetEndpoint("/v4/WEB/LookupListings");
+
+      return Get<T>();
+    }
+
+    /// <summary>
+    /// This asynchronous function sends the CloudAPI request using the /v4/WEB/LookupListings endpoint
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>a string or deserialized response object</returns>
+    public async Task<T> GetLookupListingsAsync<T>()
+    {
+      this.SetEndpoint("/v4/WEB/LookupListings");
+
+      return await GetAsync<T>();
+    }
+
+    /// <summary>
+    /// This synchronous function sends a post request to the Cloud API using the /v4/WEB/LookupListings endpoint
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>a string or deserialized response object</returns>
+    public T PostLookupListings<T>()
+    {
+      this.SetEndpoint("/v4/WEB/LookupListings");
+
+      string response = base.SendPostRequest(this.PostBody);
+
+      return HandleResponse<T>(response);
+    }
+
+    /// <summary>
+    /// This asynchronous function sends a post request to the Cloud API using the /v4/WEB/LookupListings endpoint
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>a string or deserialized response object</returns>
+    public async Task<T> PostLookupListingsAsync<T>()
+    {
+      this.SetEndpoint("/v4/WEB/LookupListings");
+
+      string response = await SendPostRequestAsync(this.PostBody);
+
+      return HandleResponse<T>(response);
+    }
+
+    /// <summary>
     /// This synchronous function sends the CloudAPI request using the /v4/WEB/LookupProperty endpoint
     /// </summary>
     /// <typeparam name="T"></typeparam>

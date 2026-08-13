@@ -8,6 +8,7 @@ namespace MelissaData.CloudAPI
   public class PropertyResponse : ResponseBase
   {
     public string Version { get; set; }
+    public string TransmissionReference { get; set; }
     public string TransmissionResults { get; set; }
     public string Results { get; set; }
     public string TotalRecords { get; set; }
@@ -17,6 +18,11 @@ namespace MelissaData.CloudAPI
     public void SetVersion(string version)
     {
       this.Version = version;
+    }
+
+    public void SetTransmissionReference(string transmissionReference)
+    {
+      this.TransmissionReference = transmissionReference;
     }
 
     public void SetTransmissionResults(string transmissionResults)
@@ -38,6 +44,11 @@ namespace MelissaData.CloudAPI
     public string GetVersion()
     {
       return string.IsNullOrEmpty(this.Version) ? "" : this.Version;
+    }
+
+    public string GetTransmissionReference()
+    {
+      return string.IsNullOrEmpty(this.TransmissionReference) ? "" : this.TransmissionReference;
     }
 
     public string GetTransmissionResults()
@@ -107,6 +118,13 @@ namespace MelissaData.CloudAPI
     public string PropertyState { get; set; }
     public string PropertyZip { get; set; }
     public string PropertyPlus4 { get; set; }
+
+    // For LookupListings endpoint
+    public PropertyListingInfo ListingInfo { get; set; }
+    public PropertyListingValue ListingValue { get; set; }
+    public PropertyListingAgent ListingAgent { get; set; }
+    public PropertyListingAgentOffice ListingAgentOffice { get; set; }
+    public PropertyListingFeatures ListingFeatures { get; set; }
 
     // Setters
     public void SetRecordID(string recordID)
@@ -1079,6 +1097,586 @@ namespace MelissaData.CloudAPI
     public string GetInterestChangeFreq()
     {
       return string.IsNullOrEmpty(this.InterestChangeFreq) ? "" : this.InterestChangeFreq;
+    }
+  }
+
+  public class PropertyListingInfo : ResponseBase
+  {
+    public string ListingNumber { get; set; }
+    public string Status { get; set; }
+    public string StatusSubType { get; set; }
+    public string InitialStatus { get; set; }
+    public string OriginalListingDate { get; set; }
+    public string CurrentListPrice { get; set; }
+    public string MaxListPrice { get; set; }
+    public string MaxListPriceDate { get; set; }
+    public string MinListPrice { get; set; }
+    public string MinListPriceDate { get; set; }
+    public string RentalIndicator { get; set; }
+    public string SoldDate { get; set; }
+    public string SoldPrice { get; set; }
+
+    // Setters
+    public void SetListingNumber(string listingNumber)
+    {
+      this.ListingNumber = listingNumber;
+    }
+
+    public void SetStatus(string status)
+    {
+      this.Status = status;
+    }
+
+    public void SetStatusSubType(string statusSubType)
+    {
+      this.StatusSubType = statusSubType;
+    }
+
+    public void SetInitialStatus(string initialStatus)
+    {
+      this.InitialStatus = initialStatus;
+    }
+
+    public void SetOriginalListingDate(string originalListingDate)
+    {
+      this.OriginalListingDate = originalListingDate;
+    }
+
+    public void SetCurrentListPrice(string currentListPrice)
+    {
+      this.CurrentListPrice = currentListPrice;
+    }
+
+    public void SetMaxListPrice(string maxListPrice)
+    {
+      this.MaxListPrice = maxListPrice;
+    }
+
+    public void SetMaxListPriceDate(string maxListPriceDate)
+    {
+      this.MaxListPriceDate = maxListPriceDate;
+    }
+
+    public void SetMinListPrice(string minListPrice)
+    {
+      this.MinListPrice = minListPrice;
+    }
+
+    public void SetMinListPriceDate(string minListPriceDate)
+    {
+      this.MinListPriceDate = minListPriceDate;
+    }
+
+    public void SetRentalIndicator(string rentalIndicator)
+    {
+      this.RentalIndicator = rentalIndicator;
+    }
+
+    public void SetSoldDate(string soldDate)
+    {
+      this.SoldDate = soldDate;
+    }
+
+    public void SetSoldPrice(string soldPrice)
+    {
+      this.SoldPrice = soldPrice;
+    }
+
+    // Getters
+    public string GetListingNumber()
+    {
+      return string.IsNullOrEmpty(this.ListingNumber) ? "" : this.ListingNumber;
+    }
+
+    public string GetStatus()
+    {
+      return string.IsNullOrEmpty(this.Status) ? "" : this.Status;
+    }
+
+    public string GetStatusSubType()
+    {
+      return string.IsNullOrEmpty(this.StatusSubType) ? "" : this.StatusSubType;
+    }
+
+    public string GetInitialStatus()
+    {
+      return string.IsNullOrEmpty(this.InitialStatus) ? "" : this.InitialStatus;
+    }
+
+    public string GetOriginalListingDate()
+    {
+      return string.IsNullOrEmpty(this.OriginalListingDate) ? "" : this.OriginalListingDate;
+    }
+
+    public string GetCurrentListPrice()
+    {
+      return string.IsNullOrEmpty(this.CurrentListPrice) ? "" : this.CurrentListPrice;
+    }
+
+    public string GetMaxListPrice()
+    {
+      return string.IsNullOrEmpty(this.MaxListPrice) ? "" : this.MaxListPrice;
+    }
+
+    public string GetMaxListPriceDate()
+    {
+      return string.IsNullOrEmpty(this.MaxListPriceDate) ? "" : this.MaxListPriceDate;
+    }
+
+    public string GetMinListPrice()
+    {
+      return string.IsNullOrEmpty(this.MinListPrice) ? "" : this.MinListPrice;
+    }
+
+    public string GetMinListPriceDate()
+    {
+      return string.IsNullOrEmpty(this.MinListPriceDate) ? "" : this.MinListPriceDate;
+    }
+
+    public string GetRentalIndicator()
+    {
+      return string.IsNullOrEmpty(this.RentalIndicator) ? "" : this.RentalIndicator;
+    }
+
+    public string GetSoldDate()
+    {
+      return string.IsNullOrEmpty(this.SoldDate) ? "" : this.SoldDate;
+    }
+
+    public string GetSoldPrice()
+    {
+      return string.IsNullOrEmpty(this.SoldPrice) ? "" : this.SoldPrice;
+    }
+  }
+
+  public class PropertyListingValue : ResponseBase
+  {
+    public string LastPriceChangeAmount { get; set; }
+    public string LastPriceChangeDate { get; set; }
+    public string LastStatusChange { get; set; }
+    public string LastStatusChangeDate { get; set; }
+    public string LastStatusSubTypeChange { get; set; }
+    public string LastStatusSubTypeChangeDate { get; set; }
+    public string PriorPriceChangeAmount { get; set; }
+    public string PriorPriceChangeDate { get; set; }
+    public string PriorStatusChange { get; set; }
+    public string PriorStatusChangeDate { get; set; }
+    public string PriorStatusSubTypeChange { get; set; }
+    public string PriorStatusSubTypeChangeDate { get; set; }
+
+    // Setters
+    public void SetLastPriceChangeAmount(string lastPriceChangeAmount)
+    {
+      this.LastPriceChangeAmount = lastPriceChangeAmount;
+    }
+
+    public void SetLastPriceChangeDate(string lastPriceChangeDate)
+    {
+      this.LastPriceChangeDate = lastPriceChangeDate;
+    }
+
+    public void SetLastStatusChange(string lastStatusChange)
+    {
+      this.LastStatusChange = lastStatusChange;
+    }
+
+    public void SetLastStatusChangeDate(string lastStatusChangeDate)
+    {
+      this.LastStatusChangeDate = lastStatusChangeDate;
+    }
+
+    public void SetLastStatusSubTypeChange(string lastStatusSubTypeChange)
+    {
+      this.LastStatusSubTypeChange = lastStatusSubTypeChange;
+    }
+
+    public void SetLastStatusSubTypeChangeDate(string lastStatusSubTypeChangeDate)
+    {
+      this.LastStatusSubTypeChangeDate = lastStatusSubTypeChangeDate;
+    }
+
+    public void SetPriorPriceChangeAmount(string priorPriceChangeAmount)
+    {
+      this.PriorPriceChangeAmount = priorPriceChangeAmount;
+    }
+
+    public void SetPriorPriceChangeDate(string priorPriceChangeDate)
+    {
+      this.PriorPriceChangeDate = priorPriceChangeDate;
+    }
+
+    public void SetPriorStatusChange(string priorStatusChange)
+    {
+      this.PriorStatusChange = priorStatusChange;
+    }
+
+    public void SetPriorStatusChangeDate(string priorStatusChangeDate)
+    {
+      this.PriorStatusChangeDate = priorStatusChangeDate;
+    }
+
+    public void SetPriorStatusSubTypeChange(string priorStatusSubTypeChange)
+    {
+      this.PriorStatusSubTypeChange = priorStatusSubTypeChange;
+    }
+
+    public void SetPriorStatusSubTypeChangeDate(string priorStatusSubTypeChangeDate)
+    {
+      this.PriorStatusSubTypeChangeDate = priorStatusSubTypeChangeDate;
+    }
+
+    // Getters
+    public string GetLastPriceChangeAmount()
+    {
+      return string.IsNullOrEmpty(this.LastPriceChangeAmount) ? "" : this.LastPriceChangeAmount;
+    }
+
+    public string GetLastPriceChangeDate()
+    {
+      return string.IsNullOrEmpty(this.LastPriceChangeDate) ? "" : this.LastPriceChangeDate;
+    }
+
+    public string GetLastStatusChange()
+    {
+      return string.IsNullOrEmpty(this.LastStatusChange) ? "" : this.LastStatusChange;
+    }
+
+    public string GetLastStatusChangeDate()
+    {
+      return string.IsNullOrEmpty(this.LastStatusChangeDate) ? "" : this.LastStatusChangeDate;
+    }
+
+    public string GetLastStatusSubTypeChange()
+    {
+      return string.IsNullOrEmpty(this.LastStatusSubTypeChange) ? "" : this.LastStatusSubTypeChange;
+    }
+
+    public string GetLastStatusSubTypeChangeDate()
+    {
+      return string.IsNullOrEmpty(this.LastStatusSubTypeChangeDate) ? "" : this.LastStatusSubTypeChangeDate;
+    }
+
+    public string GetPriorPriceChangeAmount()
+    {
+      return string.IsNullOrEmpty(this.PriorPriceChangeAmount) ? "" : this.PriorPriceChangeAmount;
+    }
+
+    public string GetPriorPriceChangeDate()
+    {
+      return string.IsNullOrEmpty(this.PriorPriceChangeDate) ? "" : this.PriorPriceChangeDate;
+    }
+
+    public string GetPriorStatusChange()
+    {
+      return string.IsNullOrEmpty(this.PriorStatusChange) ? "" : this.PriorStatusChange;
+    }
+
+    public string GetPriorStatusChangeDate()
+    {
+      return string.IsNullOrEmpty(this.PriorStatusChangeDate) ? "" : this.PriorStatusChangeDate;
+    }
+
+    public string GetPriorStatusSubTypeChange()
+    {
+      return string.IsNullOrEmpty(this.PriorStatusSubTypeChange) ? "" : this.PriorStatusSubTypeChange;
+    }
+
+    public string GetPriorStatusSubTypeChangeDate()
+    {
+      return string.IsNullOrEmpty(this.PriorStatusSubTypeChangeDate) ? "" : this.PriorStatusSubTypeChangeDate;
+    }
+  }
+
+  public class PropertyListingAgent : ResponseBase
+  {
+    public string LicenseNumber { get; set; }
+    public string NameFull { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string Zip { get; set; }
+    public string MAK { get; set; }
+    public string BaseMAK { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+
+    // Setters
+    public void SetLicenseNumber(string licenseNumber)
+    {
+      this.LicenseNumber = licenseNumber;
+    }
+
+    public void SetNameFull(string nameFull)
+    {
+      this.NameFull = nameFull;
+    }
+
+    public void SetAddress(string address)
+    {
+      this.Address = address;
+    }
+
+    public void SetCity(string city)
+    {
+      this.City = city;
+    }
+
+    public void SetState(string state)
+    {
+      this.State = state;
+    }
+
+    public void SetZip(string zip)
+    {
+      this.Zip = zip;
+    }
+
+    public void SetMAK(string mak)
+    {
+      this.MAK = mak;
+    }
+
+    public void SetBaseMAK(string baseMak)
+    {
+      this.BaseMAK = baseMak;
+    }
+
+    public void SetEmail(string email)
+    {
+      this.Email = email;
+    }
+
+    public void SetPhone(string phone)
+    {
+      this.Phone = phone;
+    }
+
+    // Getters
+    public string GetLicenseNumber()
+    {
+      return string.IsNullOrEmpty(this.LicenseNumber) ? "" : this.LicenseNumber;
+    }
+
+    public string GetNameFull()
+    {
+      return string.IsNullOrEmpty(this.NameFull) ? "" : this.NameFull;
+    }
+
+    public string GetAddress()
+    {
+      return string.IsNullOrEmpty(this.Address) ? "" : this.Address;
+    }
+
+    public string GetCity()
+    {
+      return string.IsNullOrEmpty(this.City) ? "" : this.City;
+    }
+
+    public string GetState()
+    {
+      return string.IsNullOrEmpty(this.State) ? "" : this.State;
+    }
+
+    public string GetZip()
+    {
+      return string.IsNullOrEmpty(this.Zip) ? "" : this.Zip;
+    }
+
+    public string GetMAK()
+    {
+      return string.IsNullOrEmpty(this.MAK) ? "" : this.MAK;
+    }
+
+    public string GetBaseMAK()
+    {
+      return string.IsNullOrEmpty(this.BaseMAK) ? "" : this.BaseMAK;
+    }
+
+    public string GetEmail()
+    {
+      return string.IsNullOrEmpty(this.Email) ? "" : this.Email;
+    }
+
+    public string GetPhone()
+    {
+      return string.IsNullOrEmpty(this.Phone) ? "" : this.Phone;
+    }
+  }
+
+  public class PropertyListingAgentOffice : ResponseBase
+  {
+    public string Name { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string Zip { get; set; }
+    public string MAK { get; set; }
+    public string BaseMAK { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+
+    // Setters
+    public void SetName(string name)
+    {
+      this.Name = name;
+    }
+
+    public void SetAddress(string address)
+    {
+      this.Address = address;
+    }
+
+    public void SetCity(string city)
+    {
+      this.City = city;
+    }
+
+    public void SetState(string state)
+    {
+      this.State = state;
+    }
+
+    public void SetZip(string zip)
+    {
+      this.Zip = zip;
+    }
+
+    public void SetMAK(string mak)
+    {
+      this.MAK = mak;
+    }
+
+    public void SetBaseMAK(string baseMak)
+    {
+      this.BaseMAK = baseMak;
+    }
+
+    public void SetEmail(string email)
+    {
+      this.Email = email;
+    }
+
+    public void SetPhone(string phone)
+    {
+      this.Phone = phone;
+    }
+
+    // Getters
+    public string GetName()
+    {
+      return string.IsNullOrEmpty(this.Name) ? "" : this.Name;
+    }
+
+    public string GetAddress()
+    {
+      return string.IsNullOrEmpty(this.Address) ? "" : this.Address;
+    }
+
+    public string GetCity()
+    {
+      return string.IsNullOrEmpty(this.City) ? "" : this.City;
+    }
+
+    public string GetState()
+    {
+      return string.IsNullOrEmpty(this.State) ? "" : this.State;
+    }
+
+    public string GetZip()
+    {
+      return string.IsNullOrEmpty(this.Zip) ? "" : this.Zip;
+    }
+
+    public string GetMAK()
+    {
+      return string.IsNullOrEmpty(this.MAK) ? "" : this.MAK;
+    }
+
+    public string GetBaseMAK()
+    {
+      return string.IsNullOrEmpty(this.BaseMAK) ? "" : this.BaseMAK;
+    }
+
+    public string GetEmail()
+    {
+      return string.IsNullOrEmpty(this.Email) ? "" : this.Email;
+    }
+
+    public string GetPhone()
+    {
+      return string.IsNullOrEmpty(this.Phone) ? "" : this.Phone;
+    }
+  }
+
+  public class PropertyListingFeatures : ResponseBase
+  {
+    public string Appliances { get; set; }
+    public string SchoolDistrict { get; set; }
+    public string ElementarySchool { get; set; }
+    public string MiddleSchool { get; set; }
+    public string HighSchool { get; set; }
+    public string LotFeatures { get; set; }
+
+    // Setters
+    public void SetAppliances(string appliances)
+    {
+      this.Appliances = appliances;
+    }
+
+    public void SetSchoolDistrict(string schoolDistrict)
+    {
+      this.SchoolDistrict = schoolDistrict;
+    }
+
+    public void SetElementarySchool(string elementarySchool)
+    {
+      this.ElementarySchool = elementarySchool;
+    }
+
+    public void SetMiddleSchool(string middleSchool)
+    {
+      this.MiddleSchool = middleSchool;
+    }
+
+    public void SetHighSchool(string highSchool)
+    {
+      this.HighSchool = highSchool;
+    }
+
+    public void SetLotFeatures(string lotFeatures)
+    {
+      this.LotFeatures = lotFeatures;
+    }
+
+    // Getters
+    public string GetAppliances()
+    {
+      return string.IsNullOrEmpty(this.Appliances) ? "" : this.Appliances;
+    }
+
+    public string GetSchoolDistrict()
+    {
+      return string.IsNullOrEmpty(this.SchoolDistrict) ? "" : this.SchoolDistrict;
+    }
+
+    public string GetElementarySchool()
+    {
+      return string.IsNullOrEmpty(this.ElementarySchool) ? "" : this.ElementarySchool;
+    }
+
+    public string GetMiddleSchool()
+    {
+      return string.IsNullOrEmpty(this.MiddleSchool) ? "" : this.MiddleSchool;
+    }
+
+    public string GetHighSchool()
+    {
+      return string.IsNullOrEmpty(this.HighSchool) ? "" : this.HighSchool;
+    }
+
+    public string GetLotFeatures()
+    {
+      return string.IsNullOrEmpty(this.LotFeatures) ? "" : this.LotFeatures;
     }
   }
 

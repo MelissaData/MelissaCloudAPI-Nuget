@@ -19,7 +19,9 @@ namespace MelissaData.CloudAPI
         { nameof(StartLongitude), "StartLongitude" },
         { nameof(EndLatitude), "EndLatitude" },
         { nameof(EndLongitude), "EndLongitude" },
-        { nameof(TransmissionReference), "t" }
+        { nameof(Points), "points" },
+        { nameof(TransmissionReference), "t" },
+        { nameof(Opt), "opt" }
     };
 
     protected override Dictionary<string, string> ParameterMappings => parameterMappings;
@@ -30,7 +32,9 @@ namespace MelissaData.CloudAPI
     private string _startLongitude;
     private string _endLatitude;
     private string _endLongitude;
+    private string _points;
     private string _transmissionReference;
+    private string _opt;
 
     // Properties
     public string Units
@@ -83,6 +87,16 @@ namespace MelissaData.CloudAPI
       }
     }
 
+    public string Points
+    {
+      get => _points;
+      set
+      {
+        _points = value;
+        parameters[parameterMappings[nameof(Points)]] = value;
+      }
+    }
+
     public string TransmissionReference
     {
       get => _transmissionReference;
@@ -90,6 +104,16 @@ namespace MelissaData.CloudAPI
       {
         _transmissionReference = value;
         parameters[parameterMappings[nameof(TransmissionReference)]] = value;
+      }
+    }
+
+    public string Opt
+    {
+      get => _opt;
+      set
+      {
+        _opt = value;
+        parameters[parameterMappings[nameof(Opt)]] = value;
       }
     }
 
@@ -132,10 +156,22 @@ namespace MelissaData.CloudAPI
       this.EndLongitude = endLongitude;
     }
 
+    public void SetPoints(string points)
+    {
+      this.parameters["points"] = points;
+      this.Points = points;
+    }
+
     public void SetTransmissionReference(string transmissionReference)
     {
       this.parameters["t"] = transmissionReference;
       this.TransmissionReference = transmissionReference;
+    }
+
+    public void SetOpt(string opt)
+    {
+      this.parameters["opt"] = opt;
+      this.Opt = opt;
     }
 
     public void SetPostBody(StreetRoutePostRequest postBody)
@@ -190,9 +226,19 @@ namespace MelissaData.CloudAPI
       return this.parameters.ContainsKey(parameterMappings[nameof(EndLongitude)]) ? this.parameters[parameterMappings[nameof(EndLongitude)]] : "";
     }
 
+    public string GetPoints()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(Points)]) ? this.parameters[parameterMappings[nameof(Points)]] : "";
+    }
+
     public string GetTransmissionReference()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
+    }
+
+    public string GetOpt()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(Opt)]) ? this.parameters[parameterMappings[nameof(Opt)]] : "";
     }
 
     public StreetRoutePostRequest GetPostBody()
@@ -226,6 +272,8 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Options = this.GetOpt(),
+          Units = this.GetUnits(),
           Records = this.Records
         };
 
@@ -254,6 +302,8 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Options = this.GetOpt(),
+          Units = this.GetUnits(),
           Records = this.Records
         };
 

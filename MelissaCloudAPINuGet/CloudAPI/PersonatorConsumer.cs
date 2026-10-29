@@ -17,6 +17,9 @@ namespace MelissaData.CloudAPI
         { nameof(Action), "act" },
         { nameof(AddressLine1), "a1" },
         { nameof(AddressLine2), "a2" },
+        { nameof(AgeApproximate), "ageapprox" },
+        { nameof(AgeGreaterThan), "agegt" },
+        { nameof(AgeLessThan), "agelt" },
         { nameof(BirthDay), "bday" },
         { nameof(BirthMonth), "bmo" },
         { nameof(BirthYear), "byr" },
@@ -31,7 +34,7 @@ namespace MelissaData.CloudAPI
         { nameof(LastLine), "lastline" },
         { nameof(LastName), "last" },
         { nameof(MAK), "mak" },
-        { nameof(MIK), "MIK" },
+        { nameof(MIK), "mik" },
         { nameof(Phone), "phone" },
         { nameof(Postal), "postal" },
         { nameof(SSN), "ss" },
@@ -47,6 +50,9 @@ namespace MelissaData.CloudAPI
     private string _action;
     private string _addressLine1;
     private string _addressLine2;
+    private string _ageApproximate;
+    private string _ageGreaterThan;
+    private string _ageLessThan;
     private string _birthDay;
     private string _birthMonth;
     private string _birthYear;
@@ -98,6 +104,36 @@ namespace MelissaData.CloudAPI
       {
         _addressLine2 = value;
         parameters[parameterMappings[nameof(AddressLine2)]] = value;
+      }
+    }
+
+    public string AgeApproximate
+    {
+      get => _ageApproximate;
+      set
+      {
+        _ageApproximate = value;
+        parameters[parameterMappings[nameof(AgeApproximate)]] = value;
+      }
+    }
+
+    public string AgeGreaterThan
+    {
+      get => _ageGreaterThan;
+      set
+      {
+        _ageGreaterThan = value;
+        parameters[parameterMappings[nameof(AgeGreaterThan)]] = value;
+      }
+    }
+
+    public string AgeLessThan
+    {
+      get => _ageLessThan;
+      set
+      {
+        _ageLessThan = value;
+        parameters[parameterMappings[nameof(AgeLessThan)]] = value;
       }
     }
 
@@ -348,6 +384,24 @@ namespace MelissaData.CloudAPI
       this.AddressLine2 = addressLine2;
     }
 
+    public void SetAgeApproximate(string ageApproximate)
+    {
+      this.parameters["ageapprox"] = ageApproximate;
+      this.AgeApproximate = ageApproximate;
+    }
+
+    public void SetAgeGreaterThan(string ageGreaterThan)
+    {
+      this.parameters["agegt"] = ageGreaterThan;
+      this.AgeGreaterThan = ageGreaterThan;
+    }
+
+    public void SetAgeLessThan(string ageLessThan)
+    {
+      this.parameters["agelt"] = ageLessThan;
+      this.AgeLessThan = ageLessThan;
+    }
+
     public void SetBirthDay(string birthDay)
     {
       this.parameters["bday"] = birthDay;
@@ -434,7 +488,7 @@ namespace MelissaData.CloudAPI
 
     public void SetMIK(string mik)
     {
-      this.parameters["MIK"] = mik;
+      this.parameters["mik"] = mik;
       this.MIK = mik;
     }
 
@@ -520,6 +574,21 @@ namespace MelissaData.CloudAPI
     public string GetAddressLine2()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine2)]) ? this.parameters[parameterMappings[nameof(AddressLine2)]] : "";
+    }
+
+    public string GetAgeApproximate()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeApproximate)]) ? this.parameters[parameterMappings[nameof(AgeApproximate)]] : "";
+    }
+
+    public string GetAgeGreaterThan()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeGreaterThan)]) ? this.parameters[parameterMappings[nameof(AgeGreaterThan)]] : "";
+    }
+
+    public string GetAgeLessThan()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeLessThan)]) ? this.parameters[parameterMappings[nameof(AgeLessThan)]] : "";
     }
 
     public string GetBirthDay()
@@ -663,7 +732,9 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Actions = this.GetAction(),
           Options = this.GetOpt(),
+          Columns = this.GetCols(),
           Records = this.Records
         };
 
@@ -692,7 +763,9 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Actions = this.GetAction(),
           Options = this.GetOpt(),
+          Columns = this.GetCols(),
           Records = this.Records
         };
 

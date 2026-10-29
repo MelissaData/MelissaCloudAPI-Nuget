@@ -30,6 +30,7 @@ namespace MelissaData.CloudAPI
   {
     public string RecordID { get; set; }
     public string Organization { get; set; }
+    public string LastName { get; set; }
     public string AddressLine1 { get; set; }
     public string AddressLine2 { get; set; }
     public string AddressLine3 { get; set; }
@@ -65,6 +66,7 @@ namespace MelissaData.CloudAPI
     public string RecordID { get; set; }
     public string Company { get; set; }
     public string FullName { get; set; }
+    public string Country { get; set; }
   }
 
   public class GlobalPhoneRecordRequest
@@ -110,6 +112,9 @@ namespace MelissaData.CloudAPI
     public string RecordID { get; set; }
     public string AddressLine1 { get; set; }
     public string AddressLine2 { get; set; }
+    public string AgeApproximate { get; set; }
+    public string AgeGreaterThan { get; set; }
+    public string AgeLessThan { get; set; }
     public string BirthDay { get; set; }
     public string BirthMonth { get; set; }
     public string BirthYear { get; set; }
@@ -124,6 +129,7 @@ namespace MelissaData.CloudAPI
     public string LastLine { get; set; }
     public string LastName { get; set; }
     public string MelissaAddressKey { get; set; }
+    public string MIK { get; set; }
     public string PhoneNumber { get; set; }
     public string PostalCode { get; set; }
     public string SocialSecurity { get; set; }
@@ -140,6 +146,7 @@ namespace MelissaData.CloudAPI
     public string PhoneOptions { get; set; }
     public string NameOptions { get; set; }
     public string Options { get; set; }
+    public string Privacy { get; set; }
     public string NationalID { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

@@ -24,6 +24,7 @@ namespace MelissaData.CloudAPI
   public class GlobalIPPostRequest : PostRequestBase<GlobalIPRecordRequest> 
   {
     public string CustomerID { get; set; }
+    public string Columns { get; set; }
   }
 
   public class GlobalNamePostRequest : PostRequestBase<GlobalNameRecordRequest> 
@@ -39,6 +40,8 @@ namespace MelissaData.CloudAPI
   public class PersonatorConsumerPostRequest : PostRequestBase<PersonatorConsumerRecordRequest>
   {
     public string CustomerID { get; set; }
+    public string Actions { get; set; }
+    public string Columns { get; set; }
   }
 
   public class PropertyPostRequest : PostRequestBase<PropertyRecordRequest>
@@ -61,6 +64,7 @@ namespace MelissaData.CloudAPI
   public class StreetRoutePostRequest : PostRequestBase<StreetRouteRecordRequest> 
   {
     public string CustomerID { get; set; }
+    public string Units { get; set; }
   }
 
   public class SmartMoverPostRequest : PostRequestBase<SmartMoverRecordRequest>

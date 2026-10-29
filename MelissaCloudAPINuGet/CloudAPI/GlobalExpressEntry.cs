@@ -12,6 +12,7 @@ namespace MelissaData.CloudAPI
     private readonly Dictionary<string, string> parameterMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
     {
         { nameof(AddressLine1), "address1" },
+        { nameof(AddressLine2), "address2" },
         { nameof(City), "city" },
         { nameof(State), "state" },
         { nameof(Postal), "postalcode" },
@@ -23,13 +24,17 @@ namespace MelissaData.CloudAPI
         { nameof(MaxRecords), "maxrecords" },
         { nameof(Opt), "opt" },
         { nameof(Cols), "cols" },
-        { nameof(NativeCharSet), "nativecharset" }
+        { nameof(NativeCharSet), "nativecharset" },
+        { nameof(TransmissionReference), "t" },
+        { nameof(DiacriticReplace), "diacriticreplace" },
+        { nameof(SuiteCompression), "suitecompression" }
     };
 
     protected override Dictionary<string, string> ParameterMappings => parameterMappings;
 
     // Private backing fields
     private string _addressLine1;
+    private string _addressLine2;
     private string _city;
     private string _state;
     private string _postal;
@@ -42,6 +47,9 @@ namespace MelissaData.CloudAPI
     private string _opt;
     private string _cols;
     private string _nativeCharSet;
+    private string _transmissionReference;
+    private string _diacriticReplace;
+    private string _suiteCompression;
 
     // Properties
     public string AddressLine1
@@ -51,6 +59,16 @@ namespace MelissaData.CloudAPI
       {
         _addressLine1 = value;
         parameters[parameterMappings[nameof(AddressLine1)]] = value;
+      }
+    }
+
+    public string AddressLine2
+    {
+      get => _addressLine2;
+      set
+      {
+        _addressLine2 = value;
+        parameters[parameterMappings[nameof(AddressLine2)]] = value;
       }
     }
 
@@ -174,6 +192,36 @@ namespace MelissaData.CloudAPI
       }
     }
 
+    public string TransmissionReference
+    {
+      get => _transmissionReference;
+      set
+      {
+        _transmissionReference = value;
+        parameters[parameterMappings[nameof(TransmissionReference)]] = value;
+      }
+    }
+
+    public string DiacriticReplace
+    {
+      get => _diacriticReplace;
+      set
+      {
+        _diacriticReplace = value;
+        parameters[parameterMappings[nameof(DiacriticReplace)]] = value;
+      }
+    }
+
+    public string SuiteCompression
+    {
+      get => _suiteCompression;
+      set
+      {
+        _suiteCompression = value;
+        parameters[parameterMappings[nameof(SuiteCompression)]] = value;
+      }
+    }
+
     public GlobalExpressEntry(string license = null) : base("https://expressentry.melissadata.net", "/web/GlobalExpressAddress")
     {
       this.License = license ?? Environment.GetEnvironmentVariable("MD_LICENSE");
@@ -185,6 +233,12 @@ namespace MelissaData.CloudAPI
     {
       this.parameters["address1"] = addressLine1;
       this.AddressLine1 = addressLine1;
+    }
+
+    public void SetAddressLine2(string addressLine2)
+    {
+      this.parameters["address2"] = addressLine2;
+      this.AddressLine2 = addressLine2;
     }
 
     public void SetCity(string city)
@@ -259,6 +313,24 @@ namespace MelissaData.CloudAPI
       this.NativeCharSet = nativeCharSet;
     }
 
+    public void SetTransmissionReference(string transmissionReference)
+    {
+      this.parameters["t"] = transmissionReference;
+      this.TransmissionReference = transmissionReference;
+    }
+
+    public void SetDiacriticReplace(string diacriticReplace)
+    {
+      this.parameters["diacriticreplace"] = diacriticReplace;
+      this.DiacriticReplace = diacriticReplace;
+    }
+
+    public void SetSuiteCompression(string suiteCompression)
+    {
+      this.parameters["suitecompression"] = suiteCompression;
+      this.SuiteCompression = suiteCompression;
+    }
+
     public override void SetValue(string parameter, string value)
     {
       parameter = parameter?.Trim();
@@ -284,6 +356,11 @@ namespace MelissaData.CloudAPI
     public string GetAddressLine1()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine1)]) ? this.parameters[parameterMappings[nameof(AddressLine1)]] : "";
+    }
+
+    public string GetAddressLine2()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AddressLine2)]) ? this.parameters[parameterMappings[nameof(AddressLine2)]] : "";
     }
 
     public string GetCity()
@@ -344,6 +421,21 @@ namespace MelissaData.CloudAPI
     public string GetNativeCharSet()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(NativeCharSet)]) ? this.parameters[parameterMappings[nameof(NativeCharSet)]] : "";
+    }
+
+    public string GetTransmissionReference()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(TransmissionReference)]) ? this.parameters[parameterMappings[nameof(TransmissionReference)]] : "";
+    }
+
+    public string GetDiacriticReplace()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(DiacriticReplace)]) ? this.parameters[parameterMappings[nameof(DiacriticReplace)]] : "";
+    }
+
+    public string GetSuiteCompression()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(SuiteCompression)]) ? this.parameters[parameterMappings[nameof(SuiteCompression)]] : "";
     }
 
     /// <summary>

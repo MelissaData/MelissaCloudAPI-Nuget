@@ -156,6 +156,7 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Columns = this.GetCols(),
           Records = this.Records
         };
 
@@ -184,6 +185,7 @@ namespace MelissaData.CloudAPI
         {
           CustomerID = this.GetLicense(),
           TransmissionReference = this.GetTransmissionReference(),
+          Columns = this.GetCols(),
           Records = this.Records
         };
 

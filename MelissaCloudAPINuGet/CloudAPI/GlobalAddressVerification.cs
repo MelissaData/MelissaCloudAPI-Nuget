@@ -27,6 +27,7 @@ namespace MelissaData.CloudAPI
       { nameof(DoubleDependentLocality), "ddeploc" },
       { nameof(DependentLocality), "deploc" },
       { nameof(Locality), "loc" },
+      { nameof(SubAdministrativeArea), "subadmarea" },
       { nameof(AdministrativeArea), "admarea" },
       { nameof(Postal), "postal" },
       { nameof(SubNationalArea), "subnatarea" },
@@ -51,6 +52,7 @@ namespace MelissaData.CloudAPI
     private string _doubleDependentLocality;
     private string _dependentLocality;
     private string _locality;
+    private string _subAdministrativeArea;
     private string _administrativeArea;
     private string _postal;
     private string _subNationalArea;
@@ -187,6 +189,16 @@ namespace MelissaData.CloudAPI
       {
         _locality = value;
         parameters[parameterMappings[nameof(Locality)]] = value;
+      }
+    }
+
+    public string SubAdministrativeArea
+    {
+      get => _subAdministrativeArea;
+      set
+      {
+        _subAdministrativeArea = value;
+        parameters[parameterMappings[nameof(SubAdministrativeArea)]] = value;
       }
     }
 
@@ -338,6 +350,12 @@ namespace MelissaData.CloudAPI
       this.Locality = locality;
     }
 
+    public void SetSubAdministrativeArea(string subAdministrativeArea)
+    {
+      this.parameters["subadmarea"] = subAdministrativeArea;
+      this.SubAdministrativeArea = subAdministrativeArea;
+    }
+
     public void SetAdministrativeArea(string administrativeArea)
     {
       this.parameters["admarea"] = administrativeArea;
@@ -464,6 +482,11 @@ namespace MelissaData.CloudAPI
     public string GetLocality()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(Locality)]) ? this.parameters[parameterMappings[nameof(Locality)]] : "";
+    }
+
+    public string GetSubAdministrativeArea()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(SubAdministrativeArea)]) ? this.parameters[parameterMappings[nameof(SubAdministrativeArea)]] : "";
     }
 
     public string GetAdministrativeArea()

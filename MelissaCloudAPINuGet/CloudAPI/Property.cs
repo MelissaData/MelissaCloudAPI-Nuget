@@ -18,6 +18,7 @@ namespace MelissaData.CloudAPI
 
     private readonly Dictionary<string, string> parameterMappings = new(StringComparer.OrdinalIgnoreCase)
     {
+        { nameof(Account), "account" },
         { nameof(AddressKey), "addresskey" },
         { nameof(AddressLine1), "a1" },
         { nameof(AddressLine2), "a2" },
@@ -39,6 +40,7 @@ namespace MelissaData.CloudAPI
     protected override Dictionary<string, string> ParameterMappings => parameterMappings;
 
     // Private backing fields
+    private string _account;
     private string _addressKey;
     private string _addressLine1;
     private string _addressLine2;
@@ -57,6 +59,16 @@ namespace MelissaData.CloudAPI
     private string _totalRecords;
 
     // Properties
+    public string Account
+    {
+      get => _account;
+      set
+      {
+        _account = value;
+        parameters[parameterMappings[nameof(Account)]] = value;
+      }
+    }
+
     public string AddressKey
     {
       get => _addressKey;
@@ -226,6 +238,12 @@ namespace MelissaData.CloudAPI
     }
 
     // Setters
+    public void SetAccount(string account)
+    {
+      this.parameters["account"] = account;
+      this.Account = account;
+    }
+
     public void SetAddressKey(string addressKey)
     {
       this.parameters["addresskey"] = addressKey;
@@ -349,6 +367,11 @@ namespace MelissaData.CloudAPI
     }
 
     // Getters
+    public string GetAccount()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(Account)]) ? this.parameters[parameterMappings[nameof(Account)]] : "";
+    }
+
     public string GetAddressKey()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(AddressKey)]) ? this.parameters[parameterMappings[nameof(AddressKey)]] : "";

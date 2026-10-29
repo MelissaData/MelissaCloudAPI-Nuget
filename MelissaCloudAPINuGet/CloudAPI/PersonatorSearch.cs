@@ -26,9 +26,13 @@ namespace MelissaData.CloudAPI
         { nameof(Phone), "phone" },
         { nameof(Email), "email" },
         { nameof(MAK), "mak" },
+        { nameof(MIK), "mik" },
         { nameof(BirthDay), "bday" },
         { nameof(BirthMonth), "bmonth" },
-        { nameof(BirthYear), "byear" }
+        { nameof(BirthYear), "byear" },
+        { nameof(AgeApproximate), "ageapprox" },
+        { nameof(AgeGreaterThan), "agegt" },
+        { nameof(AgeLessThan), "agelt" }
     };
 
     protected override Dictionary<string, string> ParameterMappings => parameterMappings;
@@ -49,9 +53,13 @@ namespace MelissaData.CloudAPI
     private string _phone;
     private string _email;
     private string _mak;
+    private string _mik;
     private string _birthDay;
     private string _birthMonth;
     private string _birthYear;
+    private string _ageApproximate;
+    private string _ageGreaterThan;
+    private string _ageLessThan;
 
     // Properties
     public string TransmissionReference
@@ -204,6 +212,16 @@ namespace MelissaData.CloudAPI
       }
     }
 
+    public string MIK
+    {
+      get => _mik;
+      set
+      {
+        _mik = value;
+        parameters[parameterMappings[nameof(MIK)]] = value;
+      }
+    }
+
     public string BirthDay
     {
       get => _birthDay;
@@ -231,6 +249,36 @@ namespace MelissaData.CloudAPI
       {
         _birthYear = value;
         parameters[parameterMappings[nameof(BirthYear)]] = value;
+      }
+    }
+
+    public string AgeApproximate
+    {
+      get => _ageApproximate;
+      set
+      {
+        _ageApproximate = value;
+        parameters[parameterMappings[nameof(AgeApproximate)]] = value;
+      }
+    }
+
+    public string AgeGreaterThan
+    {
+      get => _ageGreaterThan;
+      set
+      {
+        _ageGreaterThan = value;
+        parameters[parameterMappings[nameof(AgeGreaterThan)]] = value;
+      }
+    }
+
+    public string AgeLessThan
+    {
+      get => _ageLessThan;
+      set
+      {
+        _ageLessThan = value;
+        parameters[parameterMappings[nameof(AgeLessThan)]] = value;
       }
     }
 
@@ -332,6 +380,12 @@ namespace MelissaData.CloudAPI
       this.MAK = mak;
     }
 
+    public void SetMIK(string mik)
+    {
+      this.parameters["mik"] = mik;
+      this.MIK = mik;
+    }
+
     public void SetBirthDay(string birthDay)
     {
       this.parameters["bday"] = birthDay;
@@ -348,6 +402,24 @@ namespace MelissaData.CloudAPI
     {
       this.parameters["byear"] = birthYear;
       this.BirthYear = birthYear;
+    }
+
+    public void SetAgeApproximate(string ageApproximate)
+    {
+      this.parameters["ageapprox"] = ageApproximate;
+      this.AgeApproximate = ageApproximate;
+    }
+
+    public void SetAgeGreaterThan(string ageGreaterThan)
+    {
+      this.parameters["agegt"] = ageGreaterThan;
+      this.AgeGreaterThan = ageGreaterThan;
+    }
+
+    public void SetAgeLessThan(string ageLessThan)
+    {
+      this.parameters["agelt"] = ageLessThan;
+      this.AgeLessThan = ageLessThan;
     }
 
     public override void SetValue(string parameter, string value)
@@ -447,6 +519,11 @@ namespace MelissaData.CloudAPI
       return this.parameters.ContainsKey(parameterMappings[nameof(MAK)]) ? this.parameters[parameterMappings[nameof(MAK)]] : "";
     }
 
+    public string GetMIK()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(MIK)]) ? this.parameters[parameterMappings[nameof(MIK)]] : "";
+    }
+
     public string GetBirthDay()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(BirthDay)]) ? this.parameters[parameterMappings[nameof(BirthDay)]] : "";
@@ -460,6 +537,21 @@ namespace MelissaData.CloudAPI
     public string GetBirthYear()
     {
       return this.parameters.ContainsKey(parameterMappings[nameof(BirthYear)]) ? this.parameters[parameterMappings[nameof(BirthYear)]] : "";
+    }
+
+    public string GetAgeApproximate()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeApproximate)]) ? this.parameters[parameterMappings[nameof(AgeApproximate)]] : "";
+    }
+
+    public string GetAgeGreaterThan()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeGreaterThan)]) ? this.parameters[parameterMappings[nameof(AgeGreaterThan)]] : "";
+    }
+
+    public string GetAgeLessThan()
+    {
+      return this.parameters.ContainsKey(parameterMappings[nameof(AgeLessThan)]) ? this.parameters[parameterMappings[nameof(AgeLessThan)]] : "";
     }
 
     /// <summary>
